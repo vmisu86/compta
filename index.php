@@ -6,7 +6,7 @@ include_once 'includes/db_connect.php';
 //when we done with the script it send everything at thee same time
 ob_start();
 
-
+// here start the SESSION
 session_start();
 
 if(isset($_POST['login'])){
@@ -19,7 +19,19 @@ if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($connection, $username);
     $password = mysqli_real_escape_string($connection, $password);
     
+    //if the field username OR password empty it will sign error
+    if(empty($username) || empty($password)) {
+		if($username == "") {
+			array_push($error_array,"Nom d'utilisateur est necessaire");
+		}
+
+		if($password == "") {
+			array_push($error_array, "Mot de passe est necessaire");
+		}
+    }
+    else{
     
+
     $query = "SELECT * FROM users WHERE username = '{$username}' ";
     $select_user_query = mysqli_query($connection, $query);
      while ($row = mysqli_fetch_assoc($select_user_query)) {
@@ -27,25 +39,10 @@ if(isset($_POST['login'])){
          $db_user_id            = $row['user_id'];
          $db_username           = $row['username'];
          $db_user_password      = $row['password'];
-
-         
      }
-    
-    //this is for decripting the password, simple we just put as a second parameters
-    //from the datebase the encrypted password
-    //$password = crypt($password, $db_user_password);
-    //here we check the typed username/password and the database username/password
-    if(empty($username) || empty($password)) {
-		if($username == "") {
-			array_push($error_array,"Nom d'utilisateur est necessaire
-");
-		} 
 
-		if($password == "") {
-			array_push($error_array, "Mot de passe est necessaire
-");
-		}}
-    elseif($db_user_password != md5($password) || $db_username != $username){
+
+    if($db_user_password != md5($password) || $db_username != $username){
         
         if($db_username != $username){
         array_push($error_array, "Nom d'utilisateur n'extiste pas.");
@@ -62,82 +59,86 @@ if(isset($_POST['login'])){
              header("LOCATION:dashboard.php") ;
          }
  }
+}
  ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Stock Management System</title>
+    <title>Compta - Accounting systeme</title>
 
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
-	<!-- bootstrap theme-->
-	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap-theme.min.css">
-	<!-- font awesome -->
-	<link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
+    <!-- bootstrap theme-->
+    <link rel="stylesheet" href="assests/bootstrap/css/bootstrap-theme.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
 
-  <!-- custom css -->
-  <link rel="stylesheet" href="custom/css/custom.css">	
+    <!-- custom css -->
+    <link rel="stylesheet" href="custom/css/custom.css">
 
-  <!-- jquery -->
-	<script src="assests/jquery/jquery.min.js"></script>
-  <!-- jquery ui -->  
-  <link rel="stylesheet" href="assests/jquery-ui/jquery-ui.min.css">
-  <script src="assests/jquery-ui/jquery-ui.min.js"></script>
+    <!-- jquery -->
+    <script src="assests/jquery/jquery.min.js"></script>
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="assests/jquery-ui/jquery-ui.min.css">
+    <script src="assests/jquery-ui/jquery-ui.min.js"></script>
 
-  <!-- bootstrap js -->
-	<script src="assests/bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="assests/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<div class="container">
-		<div class="row vertical">
-			<div class="col-md-5 col-md-offset-4">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">Please Sign in</h3>
-					</div>
-					<div class="panel-body">
 
-						<div class="messages">
-							<?php if($error_array) {
+<body>
+    <div class="container">
+        <div class="row vertical">
+            <div class="col-md-5 col-md-offset-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign in</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="messages">
+                            <?php if($error_array) {
 								foreach ($error_array as $key => $value) {
 									echo '<div class="alert alert-warning" role="alert">
 									<i class="glyphicon glyphicon-exclamation-sign"></i>
 									'.$value.'</div>';										
 									}
 								} ?>
-						</div>
+                        </div>
 
-						<form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
-							<fieldset>
-							  <div class="form-group">
-									<label for="username" class="col-sm-2 control-label">Username</label>
-									<div class="col-sm-10">
-									  <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="password" class="col-sm-2 control-label">Password</label>
-									<div class="col-sm-10">
-									  <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
-									</div>
-								</div>								
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-									  <button type="submit" name="login" class="btn btn-default"> <i class="glyphicon glyphicon-log-in"></i> Sign in</button>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<!-- panel-body -->
-				</div>
-				<!-- /panel -->
-			</div>
-			<!-- /col-md-4 -->
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- container -->	
+                        <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" name="login" class="btn btn-default"> <i class="glyphicon glyphicon-log-in"></i> Sign in</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- panel-body -->
+                </div>
+                <!-- /panel -->
+            </div>
+            <!-- /col-md-4 -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- container -->
 </body>
+
 </html>
