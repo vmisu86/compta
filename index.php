@@ -59,7 +59,7 @@ if(isset($_POST['login'])){
             $_SESSION['user_id']       = $db_user_id;
             $_SESSION['username']      = $db_username;
 
-             echo "LOGGEDIN" .$_SESSION['username'] ;
+             header("dashboard.php") ;
          }
  }
  ?>
