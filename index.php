@@ -76,7 +76,7 @@ if(isset($_POST['login'])){
     <link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
 
     <!-- custom css -->
-    <link rel="stylesheet" href="custom/css/custom.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- jquery -->
     <script src="assests/jquery/jquery.min.js"></script>
@@ -99,6 +99,8 @@ if(isset($_POST['login'])){
                     <div class="panel-body">
 
                         <div class="messages">
+
+                           <!--display the errors -->
                             <?php if($error_array) {
 								foreach ($error_array as $key => $value) {
 									echo '<div class="alert alert-warning" role="alert">
