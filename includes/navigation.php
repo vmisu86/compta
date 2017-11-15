@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Compta - Accounting System v 1.0</a>
+                <a class="navbar-brand" href="dashboard.php">Compta - Accounting System v 1.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -61,6 +61,21 @@
                                 </li>
                                 <li>
                                     <a href="#">Add customers</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- ./customers -->
+
+                        <!-- products -->
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Pruducts<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">View all products</a>
+                                </li>
+                                <li>
+                                    <a href="#">Add pruducts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
