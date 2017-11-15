@@ -20,6 +20,9 @@
     <!-- Custom CSS -->
     <link href="css/dashboard.css" rel="stylesheet">
 
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="assests/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
