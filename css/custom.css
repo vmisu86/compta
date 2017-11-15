@@ -1,3 +1,7 @@
 .panel{
     margin-top: 150px;
 }
+
+.ui-datepicker-calendar {
+		display: none;
+	}

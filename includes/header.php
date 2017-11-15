@@ -17,14 +17,23 @@
     <!-- MetisMenu CSS -->
     <link href="assests/metisMenu/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" href="assests/plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="assests/plugins/fullcalendar/fullcalendar.print.css" media="print">
+
     <!-- Custom CSS -->
     <link href="css/dashboard.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="assests/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+     <!-- jQuery -->
+    <script src="assests/jquery/jquery.min.js"></script>
+        <!-- fullCalendar 2.2.5 -->
+<script src="assests/plugins/moment/moment.min.js"></script>
+<script src="assests/plugins/fullcalendar/fullcalendar.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+    <script src="assests/metisMenu/metisMenu.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,3 +46,5 @@
 
 <body>
 <?php include "db_connect.php"; ?>
+
+<?php include "includes/functions.php"; ?>
