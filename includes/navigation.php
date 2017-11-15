@@ -97,7 +97,15 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Employees</a>
+                            <a href="../employees.php"><i class="fa fa-users fa-fw"></i> Employees</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="employees.php">View all employees</a>
+                                </li>
+                                <li>
+                                    <a href="employees.php?source=add_employee">Add employee</a>
+                                </li>
+                            </ul>
                         </li>
 
 

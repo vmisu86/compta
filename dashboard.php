@@ -25,12 +25,12 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
+                                <div class="huge"><?php echo recordCount("clients");?></div>
                                 <div>Customers</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="employees.php">
                         <div class="panel-footer">
                             <span class="pull-left">View Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -49,7 +49,7 @@
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
+                                <div class="huge"><?php echo recordCount("produits");?></div>
                                 <div>Pruducts</div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
+                                <div class="huge"><?php echo recordCount("factures_cl");?></div>
                                 <div>Orders</div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 <i class="fa fa-users fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
+                                <div class="huge"><?php echo recordCount("salaires") ?></div>
                                 <div>Employees</div>
                             </div>
                         </div>
@@ -139,6 +139,7 @@
                 <!-- /.panel -->
 
             </div>
+
             <!-- /.col-lg-8 -->
             <div class="col-lg-8">
                 <div class="panel panel-default">
@@ -224,11 +225,60 @@
                 <!-- /.panel -->
 
             </div>
-            <!-- /.col-lg-4 -->
+            <!-- /.col-lg-8 -->
+
         </div>
         <!-- /.row -->
 
-        <?php findAllCustomers(); ?>
+                   <!-- /.col-lg-8 -->
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-shopping-cart fa-fw"></i> Last Orders
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="#">View All</a>
+                                    </li>
+                                    <li><a href="#">Add order</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <?php findAllCustomers(); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+
+            </div>
+            <!-- /.col-lg-4 -->
+
+
     </div>
     <!-- /#page-wrapper -->
 
