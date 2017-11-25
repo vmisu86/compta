@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
             $_SESSION['user_id']       = $db_user_id;
             $_SESSION['username']      = $db_username;
 
-             header("LOCATION:dashboard.php") ;
+             header("Location:dashboard.php") ;
          }
  }
 }
@@ -103,7 +103,7 @@ if(isset($_POST['login'])){
                            <!--display the errors -->
                             <?php if($error_array) {
 								foreach ($error_array as $key => $value) {
-									echo '<div class="alert alert-warning" role="alert">
+									echo '<div class="alert alert-danger" role="alert">
 									<i class="glyphicon glyphicon-exclamation-sign"></i>
 									'.$value.'</div>';										
 									}

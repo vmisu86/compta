@@ -47,4 +47,11 @@
 <body>
 <?php include "db_connect.php"; ?>
 
-<?php include "includes/functions.php"; ?>
+<?php include "includes/functions/functions_general.php";
+    include "includes/functions/functions_employe.php";
+    include "includes/functions/functions_produit.php";
+    include "includes/functions/functions_client.php";
+
+
+
+    ?>

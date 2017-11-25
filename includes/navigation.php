@@ -54,31 +54,14 @@
 
                         <!-- customers -->
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Customers<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">View all customers</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add customers</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="customers.php"><i class="fa fa-user fa-fw"></i> Customers</a>
+
                         </li>
                         <!-- ./customers -->
 
                         <!-- products -->
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Pruducts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">View all products</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add pruducts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="products.php"><i class="fa fa-wrench fa-fw"></i> Pruducts</a>
                         </li>
                         <!-- customers -->
                         <li>
@@ -112,15 +95,8 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="../employees.php"><i class="fa fa-users fa-fw"></i> Employees</a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="employees.php">View all employees</a>
-                                </li>
-                                <li>
-                                    <a href="employees.php?source=add_employee">Add employee</a>
-                                </li>
-                            </ul>
+                            <a href="employees.php"><i class="fa fa-users fa-fw"></i> Employees</a>
+
                         </li>
 
 
