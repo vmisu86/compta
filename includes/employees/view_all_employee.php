@@ -12,7 +12,7 @@ if(isset($_GET['delete'])){
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> View all employees</h1>
+        <h1 class="page-header"> Tous les employes</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -35,9 +35,9 @@ if(isset($_GET['delete'])){
             <table class="table table-hover" >
                 <thead>
                     <th>ID</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Phone number</th>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Num phone</th>
                     <th>E-mail</th>
                     <th>Poste</th>
                     <th>Net</th>

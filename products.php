@@ -24,6 +24,9 @@
                         }
 
                         switch($source){
+                                case 'add_product';
+                                    include"includes/products/add_products.php";
+                                break;
 
                                 case 'edit_product';
                                     include"includes/products/edit_products.php";

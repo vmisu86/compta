@@ -15,31 +15,33 @@ function viewAllProducts(){
         $produit_image          = $row['produit_image'];
         $produit_prix           = $row['produit_prix'];
 
-         echo "<tr><td>".$produit_id.
-             "</td><td>".$produit_appellation.
-            "</td><td>".$produit_description.
-            "</td><td>".$produit_image.
-            "</td><td>".$produit_prix.
-            "</td><td>"."<a class='btn btn-warning' href='products.php?source=edit_product&edit_product={$produit_id}'>Edit</a>" .
-            "</td><td>"."<a rel='$produit_id' class='btn btn-danger delete_product_link'>Delete</a>".
+         echo "<tr><td>$produit_id</td>";
+         echo "<td>$produit_appellation</td>";
+         echo "<td>$produit_description</td>";
+         echo "<td><img width='80px;' src='/compta/produit_images/$produit_image' alt='image'></td>";
+         echo "<td>$produit_prix</td>";
+         echo "<td>".
+             "<div class='dropdown'>
+            <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                Options
+                <span class='caret'></span>
+                </button>
+            <ul class='dropdown-menu' aria-labelledby='dLabel'>
+                <li>
+                    <a class='' href='products.php?source=edit_product&edit_product={$produit_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
+                </li>
+                <li>
+                 <a rel='$produit_id' class=' delete_product_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
+                </li>
+            </ul>
+        </div>".
             "</td></tr>";
 
 
     }
 }
-//---------------------DELETE - CUSTOMERS-----------------//
-function deleteProducts(){
 
-    global $connection;
-if(isset($_GET['delete'])){
-    $the_clien_id = $_GET['delete'];
-    $query = "DELETE FROM clients WHERE client_id = {$the_clien_id}";
-    $delete_query = mysqli_query($connection, $query);
-
-    redirect("customers.php");
-
-
-    }
-}
 
 ?>
+
+

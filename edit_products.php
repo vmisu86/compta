@@ -8,10 +8,10 @@ if(isset($_GET['edit_product'])){
 
       while($row = mysqli_fetch_assoc($select_produit_query)) {
         $produit_id = $row['produit_id'];
-         $produit_appellation   = $row['produit_appellation'];
-         $produit_description   = $row['produit_description'];
-         $produit_image         = $row['produit_image'];
-         $produit_prix          = $row['produit_prix'];
+         $produit_appellation      = $row['produit_appellation'];
+         $produit_description        = $row['produit_description'];
+         $produit_image       = $row['image'];
+         $produit_prix       = $row['produit_prix'];
       }
 }
 if(isset($_POST['edit_produit'])){
@@ -19,17 +19,19 @@ if(isset($_POST['edit_produit'])){
          $success_array = array();
          $produit_appellation       = $_POST['produit_appellation'];
          $produit_description       = $_POST['produit_description'];
-
-         $produit_image             = $_FILES['produit_image']['name'];
-         $produit_image_temp        = $_FILES['produit_image']['tmp_name'];
-
          $produit_prix              = $_POST['produit_prix'];
 
+     $uploaddir = '../images/';
+    $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
 
-    move_uploaded_file($produit_image_temp, "./produit_images/$produit_image");
+    }
+    else if {
+       array_push($error_array, "L'image n'a pas été publiée");
+    }
 
 
-            if(empty($produit_appellation)||empty($produit_description)||empty($produit_prix)){
+           else if(empty($produit_appellation)||empty($produit_description)||empty($produit_prix)){
                 array_push($error_array, "Les champs ne peuvent pas être vides");
             }
             else if(strlen($produit_appellation)<=1 || strlen($produit_appellation)>=25){
@@ -46,7 +48,7 @@ if(isset($_POST['edit_produit'])){
           $query = "UPDATE produits SET ";
           $query .="produit_appellation  = '{$produit_appellation}', ";
           $query .="produit_description = '{$produit_description}', ";
-          $query .="produit_image = '{$produit_image}', ";
+          $query .="image = '{$uploadfile}', ";
           $query .="produit_prix   = '{$produit_prix}' ";
           $query .= "WHERE produit_id = '{$the_produit_id}' ";
 
@@ -54,7 +56,7 @@ if(isset($_POST['edit_produit'])){
 
         confirmQuery($create_employee_query);
 
-        array_push($success_array, "Vous avez modifié avec succès le produit <a href ='/compta/products.php'> Retour </a>");
+        array_push($success_array, "Vous avez modifié avec succès le produit <a href ='/compta/products.php'> Back </a>");
             }
 }
 
@@ -90,7 +92,7 @@ if(isset($_POST['edit_produit'])){
     }
     ?>
     </div>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post">
 
         <div class="form-group">
             <label for="salarie_prenom">Appellation</label>
@@ -103,8 +105,8 @@ if(isset($_POST['edit_produit'])){
         </div>
 
         <div class="form-group">
-         <img width='180px;' class="product_image" src="/compta/produit_images/<?php echo $produit_image; ?>" alt="">
-        <input type="file" name="produit_image" class="well well-sm">
+         <img class="product_image" src="/compta/images/<?php echo $user_image; ?>" alt="">
+        <input type="file" name="image" class="center-block well well-sm">
         </div>
 
         <div class="form-group">

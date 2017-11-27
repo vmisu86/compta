@@ -42,10 +42,10 @@ function viewAllEmployees(){
                 </button>
             <ul class='dropdown-menu' aria-labelledby='dLabel'>
                 <li>
-                    <a class='' href='employees.php?source=edit_employee&edit_empolyee={$employee_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i>Edit</a>
+                    <a class='' href='employees.php?source=edit_employee&edit_empolyee={$employee_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
                 </li>
                 <li>
-                    <a rel='$employee_id' class=' delete_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Delete</a>
+                    <a rel='$employee_id' class=' delete_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
                 </li>
             </ul>
         </div>". "
