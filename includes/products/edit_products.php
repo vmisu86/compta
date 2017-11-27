@@ -17,6 +17,9 @@ if(isset($_GET['edit_product'])){
 if(isset($_POST['edit_produit'])){
          $error_array = array();
          $success_array = array();
+         $upload_check = 1;
+         $imageFileType = pathinfo($produit_image_with_path,PATHINFO_EXTENSION);
+
          $produit_appellation       = $_POST['produit_appellation'];
          $produit_description       = $_POST['produit_description'];
 
@@ -25,8 +28,33 @@ if(isset($_POST['edit_produit'])){
 
          $produit_prix              = $_POST['produit_prix'];
 
+        //Image verification
+         $produit_image_with_path = "./produit_images/$produit_image";
+         $imageFileType = pathinfo($produit_image_with_path,PATHINFO_EXTENSION);
+            // Check file size max 1Mbyte
+        if ($_FILES["produit_image"]["size"] >= 1000000) {
+            array_push($error_array, "Désolé, votre fichier est trop volumineux. Max: 1 mégaoctets.");
+            $upload_check = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            array_push($error_array, "Désolé, seulement les fichiers JPG, JPEG, PNG et GIF sont autorisés.");
+            $upload_check = 0;
+        }
 
-    move_uploaded_file($produit_image_temp, "./produit_images/$produit_image");
+        if($upload_check == 0){
+            array_push($error_array, "Désolé, votre image n'a pas été téléchargée.");
+        // if everything is ok, try to upload file
+        }else{
+            if( move_uploaded_file($produit_image_temp, $produit_image_with_path)){
+                array_push($success_array, "L'image a été téléchargée avec succès");
+            }
+            else{
+                array_push($error_array, "Désolé, une erreur s'est produite lors du chargement de votre image.");
+            }
+        }
+
 
 
             if(empty($produit_appellation)||empty($produit_description)||empty($produit_prix)){
@@ -35,8 +63,8 @@ if(isset($_POST['edit_produit'])){
             else if(strlen($produit_appellation)<=1 || strlen($produit_appellation)>=25){
                 array_push($error_array,"L'appellation' entre 2 et 25 caractères" );
             }
-            else if(strlen($produit_description)<=1 || strlen($produit_description)>=25){
-                array_push($error_array,"La description entre 2 et 25 caractères" );
+            else if(strlen($produit_description)<=1 || strlen($produit_description)>=50){
+                array_push($error_array,"La description entre 2 et 50 caractères" );
             }
             else if(strlen($produit_prix)<=1 || strlen($produit_prix)>=12){
                 array_push($error_array,"Le prix entre 4 et 12 chiffres" );

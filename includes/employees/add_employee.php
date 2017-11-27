@@ -1,8 +1,4 @@
 <?php
-include_once '../db_connect.php';
-include_once '../functions/functions_general.php';
-
-
 
 
 if(isset($_POST['create_emplyee'])){
@@ -29,6 +25,9 @@ if(isset($_POST['create_emplyee'])){
             else if(strlen($employee_phone)<=3 || strlen($employee_phone)>=20){
                 array_push($error_array,"Le numéro de téléphone entre 4 et 20 chiffres" );
             }
+            else if (!filter_var($employee_email, FILTER_VALIDATE_EMAIL)){
+                array_push($error_array,"Format d'email invalide" );
+            }
             else if(strlen($employee_poste)<=1 || strlen($employee_poste)>=25){
                 array_push($error_array,"La poste entre 2 et 25 caractères" );
             }
@@ -45,9 +44,8 @@ if(isset($_POST['create_emplyee'])){
 
         confirmQuery($create_employee_query);
 
-        header("Location: /compta/employees.php");
 
-                 array_push($success_array, "Vous avez modifié avec succès l'employé <a href ='/compta/employees.php'> Back </a>");
+                 array_push($success_array, "Vous avez ajouté avec succès l'employé <a href ='/compta/employees.php'> Back </a>");
             }
 
 }
@@ -88,17 +86,17 @@ if(isset($_POST['create_emplyee'])){
                 <form action="" method="post">
 
                     <div class="form-group">
-                        <label for="salarie_prenom">Firstname</label>
+                        <label for="salarie_prenom">Prenom</label>
                         <input type="text" class="form-control" name="salarie_prenom">
                     </div>
 
                     <div class="form-group">
-                        <label for="salarie_nom">Lastname</label>
+                        <label for="salarie_nom">Nom</label>
                         <input type="text" class="form-control" name="salarie_nom">
                     </div>
 
                     <div class="form-group">
-                        <label for="salarie_phone">Phone Number</label>
+                        <label for="salarie_phone">Numero Phone</label>
                         <input type="text" class="form-control" name="salarie_phone">
                     </div>
 
@@ -108,14 +106,14 @@ if(isset($_POST['create_emplyee'])){
                     </div>
 
                     <div class="form-group">
-                        <label for="salarie_poste">Post</label>
+                        <label for="salarie_poste">Poste</label>
                         <input type="text" class="form-control" name="salarie_poste">
                     </div>
                     <div class="form-group">
-                        <label for="salarie_salaire_NET">Salary NET</label>
+                        <label for="salarie_salaire_NET">Salaire NET</label>
                         <input type="number" min="0" class="form-control" name="salarie_salaire_NET">
                     </div>
-                    <input class="btn btn-primary" type="submit" name="create_emplyee" value="Add Employee">
+                    <input class="btn btn-primary" type="submit" name="create_emplyee" value="Ajout Employe">
                 </form>
 
 

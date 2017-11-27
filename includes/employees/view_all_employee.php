@@ -21,7 +21,7 @@ if(isset($_GET['delete'])){
 		  <li class="active">Employes</li>
 		</ol>
 <div style="margin: 0 0 20px 0 ;">
-     <a class='btn btn-default' href='employees.php?source=add_employee'><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;Ajout EmployeAjout</a>
+     <a class='btn btn-default' href='employees.php?source=add_employee'><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;Ajout Employe</a>
 </div>
 <div class="panel panel-default">
    <div class="panel-heading">

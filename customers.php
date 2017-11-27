@@ -24,9 +24,12 @@
                         }
 
                         switch($source){
+                                case 'add_customer';
+                                    include"includes/customers/add_customer.php";
+                                break;
 
                                 case 'edit_customer';
-                                    include"includes/employees/edit_employee.php";
+                                    include"includes/customers/edit_customer.php";
                                 break;
 
                             default:

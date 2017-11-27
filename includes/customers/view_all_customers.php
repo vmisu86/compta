@@ -1,17 +1,44 @@
 <?php include("delete_modal.php");?>
 
+<?php
+
+if(isset($_GET['delete'])){
+    $the_clien_id = $_GET['delete'];
+    $query = "DELETE FROM clients WHERE client_id = {$the_clien_id}";
+    $delete_query = mysqli_query($connection, $query);
+
+    redirect("/compta/customers.php");
+
+
+    }
+
+
+
+?>
+
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> Tous les Clientss</h1>
-        <?php include"add_customer_modal.php"; ?>
+        <h1 class="page-header"> Tous les clients</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
+<ol class="breadcrumb">
+		  <li><a href="dashboard.php">Accueil</a></li>
+		  <li class="active">Clients</li>
+		</ol>
+<div style="margin: 0 0 20px 0 ;">
+     <a class='btn btn-default' href='customers.php?source=add_customer'><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;Ajout Client</a>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading">
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Tous les clients</div>
 
-<div class="panel-body">
-    <div class="row">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+
+
+			</div> <!-- /panel-heading -->
+
+    <div class="panel-body" style="padding-bottom: 20px;">
+            <table class="table table-hover" >
                 <thead>
                     <th>ID</th>
                     <th>Prenom</th>
@@ -19,16 +46,14 @@
                     <th>Adresse</th>
                     <th>Phone</th>
                     <th>E-mail</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Options</th>
                 </thead>
                 <tbody>
                     <?php viewAllCustomers(); ?>
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
+
 
 <script>
     $(document).ready(function() {
@@ -40,4 +65,4 @@
         });
     });
 </script>
-<?php deleteCustomers(); ?>
+

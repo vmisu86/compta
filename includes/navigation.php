@@ -54,39 +54,39 @@
 
                         <!-- customers -->
                         <li>
-                            <a href="customers.php"><i class="fa fa-user fa-fw"></i> Customers</a>
+                            <a href="customers.php"><i class="fa fa-user fa-fw"></i> Clients</a>
 
                         </li>
                         <!-- ./customers -->
 
                         <!-- products -->
                         <li>
-                            <a href="products.php"><i class="fa fa-wrench fa-fw"></i> Pruducts</a>
+                            <a href="products.php"><i class="fa fa-wrench fa-fw"></i> Produits</a>
                         </li>
                         <!-- customers -->
                         <li>
-                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Orders<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Factures<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Customers <span class="fa arrow"></span></a>
+                                    <a href="#">Clients <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="#">View all orders</a>
+                                            <a href="#">Tous les factures</a>
                                         </li>
                                         <li>
-                                            <a href="#">Add order</a>
+                                            <a href="#">Ajout factures</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
                                 </li>
                                 <li>
-                                    <a href="#">Companies <span class="fa arrow"></span></a>
+                                    <a href="#">Fournisseurs <span class="fa arrow"></span></a>
                                    <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="#">View all orders</a>
+                                            <a href="#">Tous les factures</a>
                                         </li>
                                         <li>
-                                            <a href="#">Add order</a>
+                                            <a href="#">Ajout factures</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
@@ -95,7 +95,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="employees.php"><i class="fa fa-users fa-fw"></i> Employees</a>
+                            <a href="employees.php"><i class="fa fa-users fa-fw"></i> Employés</a>
 
                         </li>
 

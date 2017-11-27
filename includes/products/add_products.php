@@ -1,10 +1,12 @@
 <?php
-include_once '../db_connect.php';
-include_once '../functions/functions_general.php';
+
 
 if(isset($_POST['create_product'])){
          $error_array = array();
          $success_array = array();
+         $upload_check = 1;
+         $imageFileType = pathinfo($produit_image_with_path,PATHINFO_EXTENSION);
+
          $produit_appellation       = $_POST['produit_appellation'];
          $produit_description       = $_POST['produit_description'];
 
@@ -13,7 +15,32 @@ if(isset($_POST['create_product'])){
 
          $produit_prix              = $_POST['produit_prix'];
 
-        move_uploaded_file($produit_image_temp, "./produit_images/$produit_image");
+       //Image verification
+         $produit_image_with_path = "./produit_images/$produit_image";
+         $imageFileType = pathinfo($produit_image_with_path,PATHINFO_EXTENSION);
+            // Check file size max 1Mbyte
+        if ($_FILES["produit_image"]["size"] >= 1000000) {
+            array_push($error_array, "Désolé, votre fichier est trop volumineux. Max: 1 mégaoctets.");
+            $upload_check = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            array_push($error_array, "Désolé, seulement les fichiers JPG, JPEG, PNG et GIF sont autorisés.");
+            $upload_check = 0;
+        }
+
+        if($upload_check == 0){
+            array_push($error_array, "Désolé, votre image n'a pas été téléchargée.");
+        // if everything is ok, try to upload file
+        }else{
+            if( move_uploaded_file($produit_image_temp, $produit_image_with_path)){
+                array_push($success_array, "L'image a été téléchargée avec succès");
+            }
+            else{
+                array_push($error_array, "Désolé, une erreur s'est produite lors du chargement de votre image.");
+            }
+        }
 
         if(empty($produit_appellation)||empty($produit_description)||empty($produit_prix)){
                 array_push($error_array, "Les champs ne peuvent pas être vides");
@@ -90,8 +117,8 @@ if(isset($_POST['create_product'])){
         </div>
 
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" class="form-control" name="produit_image">
+         <img width='180px;' class="product_image" src="/compta/produit_images/<?php echo $produit_image; ?>" alt="">
+        <input type="file" name="produit_image" class="well well-sm">
         </div>
 
         <div class="form-group">
