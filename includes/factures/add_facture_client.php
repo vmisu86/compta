@@ -244,7 +244,7 @@ function showProduit(str) {
         return;
     } else {
         if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
+            // code for IE7+, Firefox, Chrome, Opera, Safar
             xmlhttp = new XMLHttpRequest();
         } else {
             // code for IE6, IE5
