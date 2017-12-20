@@ -2,7 +2,8 @@
 <?php
 
 if(isset($_POST['create_customer'])){
-
+         $error_array = array();
+         $success_array = array();
          $client_nom          = $_POST['nom'];
          $client_prenom       = $_POST['prenom'];
          $client_adresse       = $_POST['adresse'];
@@ -34,7 +35,7 @@ if(isset($_POST['create_customer'])){
 
         confirmQuery($create_customer_query);
 
-        array_push($success_array, "Vous avez ajouté avec succès l'employé <a href ='/compta/employees.php'> Back </a>");
+        array_push($success_array, "Vous avez ajouté avec succès le client <a href ='/compta/customers.php'> Back </a>");
 
 }
 
@@ -48,7 +49,7 @@ if(isset($_POST['create_customer'])){
 </div>
         <ol class="breadcrumb">
 		  <li><a href="dashboard.php">Accueil</a></li>
-		  <li><a href="employees.php">Clients</a></li>
+		  <li><a href="customers.php">Clients</a></li>
 		  <li class="active">Ajout Client</li>
 		</ol>
                    <div class="messages">
@@ -73,7 +74,7 @@ if(isset($_POST['create_customer'])){
                         </div>
 
 
-                <form action="includes/customers/create_customer.php" method="post">
+                <form action="" method="post">
 
                     <div class="form-group">
                         <label for="prenom">Prenom</label>

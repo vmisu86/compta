@@ -1,0 +1,18 @@
+.sommepositif {
+    padding: 0;
+    margin: 0 auto;
+    color: green;
+}
+.sommenegatif{
+    padding: 0;
+    margin: 0 auto;
+    color: red;
+}
+.sommezero{
+    padding: 0;
+    margin: 0 auto;
+}
+.somme{
+    padding: 0;
+    margin: 0 auto;
+}

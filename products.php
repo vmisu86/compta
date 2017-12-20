@@ -11,9 +11,8 @@
 
        <?php
 
-                        //for a reason security we use a switch statement
-                        //thanks for this we call the pages throw a variable, not direct
-                        //we switch between the forms what we can find in the specified php files
+// pour une raison de sécurité et de transparence nous utilisons une déclaration de commutateur
+// nous basculons entre les formes ce que nous pouvons trouver dans les fichiers php spécifiés
 
                         if(isset($_GET['source'])){
 

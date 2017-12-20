@@ -2,11 +2,11 @@
 include_once 'includes/db_connect.php';
 
 
-//This is output, we are going to need this when wee are redirecting users, code or application
-//when we done with the script it send everything at thee same time
+// Ceci est la sortie, nous allons en avoir besoin quand nous redirigeons les utilisateurs, le code ou l'application
+// quand nous avons fini avec le script, tout est envoyé en même temps
 ob_start();
 
-// here start the SESSION
+// demare la SESSION
 session_start();
 
 if(isset($_POST['login'])){
@@ -39,6 +39,8 @@ if(isset($_POST['login'])){
          $db_user_id            = $row['user_id'];
          $db_username           = $row['username'];
          $db_user_password      = $row['password'];
+         $db_user_nom           = $row['user_nom'];
+         $db_user_prenom        = $row['user_prenom'];
      }
 
 
@@ -55,7 +57,8 @@ if(isset($_POST['login'])){
          else {
             $_SESSION['user_id']       = $db_user_id;
             $_SESSION['username']      = $db_username;
-
+            $_SESSION['user_nom']      = $db_user_nom;
+            $_SESSION['user_prenom']   = $db_user_prenom;
              header("Location:dashboard.php") ;
          }
  }

@@ -1,6 +1,6 @@
 <?php
 //---------------------EMPLOYEE-----------------//
-
+//nous sélectionnons chaque ligne de la base de données et l'affichons dans une table.
 function viewAllEmployees(){
      global $connection;
 
@@ -53,7 +53,4 @@ function viewAllEmployees(){
 </tr>";
     }
 }
-
-//---------------------DELETE - EMPLOYEE-----------------//
-
 ?>

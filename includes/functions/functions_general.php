@@ -2,12 +2,14 @@
 //--------------------------------------GENERAL------------------------------------------//
 
 //-----------------REDIRECT LOCATION-------------------//
+//fonction de rediriger un autre endroit
 function redirect($location){
 
     return header("Location:" . $location);
 }
 
 //-----------------QUERY CHECK-------------------//
+//fonction pour vérifier les requêtes
 function confirmQuery($result){
     global $connection;
 if(!$result){
@@ -17,6 +19,7 @@ if(!$result){
 }
 
 //-----------------RECORD COUNT FROM A TABLE DATA-------------------//
+//Compter les enregistrements de la table
 function recordCount($table){
 
     global $connection;

@@ -7,7 +7,7 @@ if(isset($_GET['delete'])){
     $query = "DELETE FROM produits WHERE produit_id = {$the_produit_id}";
     $delete_query = mysqli_query($connection, $query);
 
-    redirect("/compta/employees.php");
+    redirect("/compta/products.php");
     }
 
 ?>
@@ -31,7 +31,7 @@ if(isset($_GET['delete'])){
 			</div> <!-- /panel-heading -->
 
     <div class="panel-body" style="padding-bottom: 20px;">
-            <table class="table table-hover" >
+            <table class="table table-hover" id="data-table" >
                 <thead>
                     <th>ID</th>
                     <th>Appellation</th>

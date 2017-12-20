@@ -1,13 +1,14 @@
 <?php
 //------------------PRODUCTS-----------------------//
+//nous sélectionnons chaque ligne de la base de données et l'affichons dans une table.
 function viewAllProducts(){
 
     global $connection;
 
     $query = "SELECT * FROM produits";
-    $select_all_customers = mysqli_query($connection, $query);
+    $select_all_produits = mysqli_query($connection, $query);
 
-    while($row = mysqli_fetch_array($select_all_customers)){
+    while($row = mysqli_fetch_array($select_all_produits)){
 
         $produit_id             = $row['produit_id'];
         $produit_appellation    = $row['produit_appellation'];

@@ -13,17 +13,18 @@
 
             <ul class="nav navbar-top-links navbar-right">
      <!--Dropdown-user -->
+               <li><h4><?php echo  $_SESSION['user_prenom']." ".$_SESSION['user_nom']; ?></h4></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="/compta/profile.php"><i class="fa fa-user fa-fw"></i> Profile d'utilisateur</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/compta/profile.php?source=edit_profile"><i class="fa fa-gear fa-fw"></i> Configuration</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="includes/logout.php"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -59,6 +60,13 @@
                         </li>
                         <!-- ./customers -->
 
+                        <!-- fournisseurs -->
+                        <li>
+                            <a href="fournisseurs.php"><i class="fa fa-user fa-fw"></i> Fournisseurs</a>
+
+                        </li>
+                        <!-- ./fournisseurs -->
+
                         <!-- products -->
                         <li>
                             <a href="products.php"><i class="fa fa-wrench fa-fw"></i> Produits</a>
@@ -68,34 +76,20 @@
                             <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Factures<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Clients <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Tous les factures</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Ajout factures</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
+                                    <a href="factures_client.php">Clients</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fournisseurs <span class="fa arrow"></span></a>
-                                   <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Tous les factures</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Ajout factures</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
+                                    <a href="factures_fournisseurs.php">Fournisseurs</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="employees.php"><i class="fa fa-users fa-fw"></i> Employés</a>
+
+                        </li>
+                        <li>
+                            <a href="taxes.php"><i class="fa fa-usd fa-fw"></i> Taxes</a>
 
                         </li>
 

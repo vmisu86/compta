@@ -32,11 +32,11 @@ if(isset($_GET['delete'])){
 			</div> <!-- /panel-heading -->
 
     <div class="panel-body" style="padding-bottom: 20px;">
-            <table class="table table-hover" >
+            <table class="table table-hover" id="data-table" >
                 <thead>
                     <th>ID</th>
-                    <th>Prenom</th>
                     <th>Nom</th>
+                    <th>Prenom</th>
                     <th>Num phone</th>
                     <th>E-mail</th>
                     <th>Poste</th>

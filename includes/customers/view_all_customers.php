@@ -18,7 +18,7 @@ if(isset($_GET['delete'])){
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> Tous les clients</h1>
+        <h1 class="page-header"> Tous les Clients</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -38,7 +38,7 @@ if(isset($_GET['delete'])){
 			</div> <!-- /panel-heading -->
 
     <div class="panel-body" style="padding-bottom: 20px;">
-            <table class="table table-hover" >
+            <table class="table table-hover" id="data-table" >
                 <thead>
                     <th>ID</th>
                     <th>Prenom</th>

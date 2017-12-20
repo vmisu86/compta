@@ -2,6 +2,8 @@
 
 
 //------------------CUSTOMERS-----------------------//
+
+//nous sélectionnons chaque ligne de la base de données et l'affichons dans une table.
 function viewAllCustomers(){
 
     global $connection;
@@ -43,6 +45,9 @@ function viewAllCustomers(){
                     <a class='' href='customers.php?source=edit_customer&edit_customer={$customer_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
                 </li>
                 <li>
+                    <a class='' href='factures_client.php?source=add_facture_client&client_id={$customer_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Facture</a>
+                </li>
+                <li>
                     <a rel='$customer_id' class='delete_customer_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
                 </li>
             </ul>
@@ -54,7 +59,7 @@ function viewAllCustomers(){
     }
 }
 
-
+//-----------------------//
 
 
 

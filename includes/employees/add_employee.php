@@ -11,7 +11,7 @@ if(isset($_POST['create_emplyee'])){
          $employee_poste        = $_POST['salarie_poste'];
          $employee_salaire_net  = $_POST['salarie_salaire_NET'];
 
-         $employee_salaire_brut = $employee_salaire_net * 2;
+         $employee_salaire_brut = $employee_salaire_net * 1.5;
 
         if(empty($employee_nom)||empty($employee_prenom)||empty($employee_phone)||empty($employee_email)||empty($employee_poste)||empty($employee_salaire_net)){
                 array_push($error_array, "Les champs ne peuvent pas être vides");
