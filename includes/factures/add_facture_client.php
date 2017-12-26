@@ -1,94 +1,94 @@
 <script>
-                    $(document).ready(function() {
+    $(document).ready(function() {
 
-                        var final_total_amt = $('#facture_cl_total_TTC').text();
-                        var count = 1;
-                        var selectProduit = "<?php selectProduit(); ?>"
-                        $(document).on('click', '#add_row', function() {
-                            count = count + 1;
+        var final_total_amt = $('#facture_cl_total_TTC').text();
+        var count = 1;
+        var selectProduit = "<?php selectProduit(); ?>"
+        $(document).on('click', '#add_row', function() {
+            count = count + 1;
 
-                            $('#total_item').val(count);
-                            var html_code = '';
-                            html_code += '<tr id="row' + count + '">';
-                            html_code += '<td><span id="sr_no">' + count + '</span></td>';
+            $('#total_item').val(count);
+            var html_code = '';
+            html_code += '<tr id="row' + count + '">';
+            html_code += '<td><span id="sr_no">' + count + '</span></td>';
 
-                            html_code += '<td><select class="form-control input-sm" name="produit_appellation[]" id="produit_appellation' + count + '" onchange="showProduit(this.value)">'+selectProduit+'</select></td>';
-
-
-                            html_code += '<td><input type="text" name="commande_produit_quantite[]" id="commande_produit_quantite' + count + '" data-srno="1" class="form-control input-sm commande_produit_quantite"></td>';
-
-                            html_code += '<td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix' + count + '" readonly  data-srno="1" class="form-control input-sm commande_produit_prix"></td>';
-
-                            html_code += '<td><input type="text" name="commande_produit_actual_montant[]" id="commande_produit_actual_montant' + count + '" data-srno="1" class="form-control input-sm commande_produit_actual_montant" readonly></td>';
-
-                            html_code += '<td><input type="text" name="commande_taxe_montant[]" id="commande_taxe_montant' + count + '" data-srno="1" readonly class="form-control input-sm number_only commande_taxe_montant"></td>';
-
-                            html_code += '<td><input type="text" name="commande_produit_final_montant[]" id="commande_produit_final_montant' + count + '" data-srno="1" readonly class="form-control input-sm 	commande_produit_final_montant"></td>';
-
-                            html_code += '<td><button type="button" name="remove_row" id="' + count + '" class="btn btn-danger btn-xs remove_row">X</button></td>';
-                            html_code += '</tr>';
-                            $('#invoice-item-table').append(html_code);
-                        });
-
-                        $(document).on('click', '.remove_row', function() {
-                            var row_id = $(this).attr("id");
-                            var total_item_amount = $('#commande_produit_final_montant' + row_id).val();
-                            var final_amount = $('#facture_cl_total_TTC').text();
-                            var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
-                            $('#facture_cl_total_TTC').text(result_amount);
-                            $('#row' + row_id).remove();
-                            count--;
-                            $('#total_item').val(count);
-                        });
+            html_code += '<td><select class="form-control input-sm" name="produit_appellation[]" id="produit_appellation' + count + '" onchange="showProduit(this.value)">' + selectProduit + '</select></td>';
 
 
-                        function cal_final_total(count) {
-                            var final_item_total = 0;
-                            var final_total_TVA = 0;
-                            var final_total_HTC = 0;
-                            for (j = 1; j <= count; j++) {
-                                var quantity = 0;
-                                var price = 0;
-                                var actual_amount = 0;
-                                var tax_amount = 0;
-                                var item_total = 0;
-                                quantity = $('#commande_produit_quantite' + j).val();
+            html_code += '<td><input type="text" name="commande_produit_quantite[]" id="commande_produit_quantite' + count + '" data-srno="1" class="form-control input-sm commande_produit_quantite"></td>';
 
-                                price = $('#commande_produit_prix' + j).val();
+            html_code += '<td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix' + count + '" readonly  data-srno="1" class="form-control input-sm commande_produit_prix"></td>';
 
-                                actual_amount = parseFloat(quantity) * parseFloat(price);
-                                $('#commande_produit_actual_montant' + j).val(actual_amount);
+            html_code += '<td><input type="text" name="commande_produit_actual_montant[]" id="commande_produit_actual_montant' + count + '" data-srno="1" class="form-control input-sm commande_produit_actual_montant" readonly></td>';
+
+            html_code += '<td><input type="text" name="commande_taxe_montant[]" id="commande_taxe_montant' + count + '" data-srno="1" readonly class="form-control input-sm number_only commande_taxe_montant"></td>';
+
+            html_code += '<td><input type="text" name="commande_produit_final_montant[]" id="commande_produit_final_montant' + count + '" data-srno="1" readonly class="form-control input-sm 	commande_produit_final_montant"></td>';
+
+            html_code += '<td><button type="button" name="remove_row" id="' + count + '" class="btn btn-danger btn-xs remove_row">X</button></td>';
+            html_code += '</tr>';
+            $('#invoice-item-table').append(html_code);
+        });
+
+        $(document).on('click', '.remove_row', function() {
+            var row_id = $(this).attr("id");
+            var total_item_amount = $('#commande_produit_final_montant' + row_id).val();
+            var final_amount = $('#facture_cl_total_TTC').text();
+            var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+            $('#facture_cl_total_TTC').text(result_amount);
+            $('#row' + row_id).remove();
+            count--;
+            $('#total_item').val(count);
+        });
 
 
-                                tax_amount = parseFloat(actual_amount) * 0.2;
-                                $('#commande_taxe_montant' + j).val(tax_amount);
+        function cal_final_total(count) {
+            var final_item_total = 0;
+            var final_total_TVA = 0;
+            var final_total_HTC = 0;
+            for (j = 1; j <= count; j++) {
+                var quantity = 0;
+                var price = 0;
+                var actual_amount = 0;
+                var tax_amount = 0;
+                var item_total = 0;
+                quantity = $('#commande_produit_quantite' + j).val();
 
-                                item_total = parseFloat(actual_amount) + parseFloat(tax_amount);
-                                $('#commande_produit_final_montant' + j).val(item_total);
+                price = $('#commande_produit_prix' + j).val();
 
-                                final_item_total = parseFloat(final_item_total) + parseFloat(item_total);
-                                final_total_TVA = parseFloat(final_total_TVA) + parseFloat(tax_amount);
-                                final_total_HTC = parseFloat(final_total_HTC) + parseFloat(actual_amount);
+                actual_amount = parseFloat(quantity) * parseFloat(price);
+                $('#commande_produit_actual_montant' + j).val(actual_amount);
 
-                            }
-                            $('#facture_cl_total_TTC').val(final_item_total);
-                            $('#facture_cl_total_TVA').val(final_total_TVA);
-                            $('#facture_cl_total_HTC').val(final_total_HTC);
-                        }
 
-                        //Display the conted values in the cases
-                        $(document).on('blur', '.commande_produit_quantite', function() {
-                            cal_final_total(count);
+                tax_amount = parseFloat(actual_amount) * 0.2;
+                $('#commande_taxe_montant' + j).val(tax_amount);
 
-                        });
+                item_total = parseFloat(actual_amount) + parseFloat(tax_amount);
+                $('#commande_produit_final_montant' + j).val(item_total);
 
-//                        $(document).on('blur', '.commande_produit_prix', function() {
-//                            cal_final_total(count);
-//                        });
+                final_item_total = parseFloat(final_item_total) + parseFloat(item_total);
+                final_total_TVA = parseFloat(final_total_TVA) + parseFloat(tax_amount);
+                final_total_HTC = parseFloat(final_total_HTC) + parseFloat(actual_amount);
+
+            }
+            $('#facture_cl_total_TTC').val(final_item_total);
+            $('#facture_cl_total_TVA').val(final_total_TVA);
+            $('#facture_cl_total_HTC').val(final_total_HTC);
+        }
+
+        //Display the conted values in the cases
+        $(document).on('blur', '.commande_produit_quantite', function() {
+            cal_final_total(count);
 
         });
 
-                </script>
+        //                        $(document).on('blur', '.commande_produit_prix', function() {
+        //                            cal_final_total(count);
+        //                        });
+
+    });
+
+</script>
 
 
 
@@ -114,6 +114,9 @@ if(isset($_GET['client_id'])){
 if(isset($_POST["create_client_facture"])){
     $error_array = array();
     $success_array = array();
+    $dateMin = "2016-01-01";
+    $dateMax = "2020-01-01";
+    $datePayeeMin = date("Y-m-d");
 
     $facture_cl_client_id       =  trim($_POST["facture_cl_client_id"]);
     $facture_cl_adresse         =  trim($_POST["facture_cl_adresse"]);
@@ -125,6 +128,18 @@ if(isset($_POST["create_client_facture"])){
     $facture_cl_total_HT        =  trim($_POST["facture_cl_total_HTC"]);
     $facture_cl_mont_TVA        =  trim($_POST["facture_cl_total_TVA"]);
     $facture_cl_total_TTC       =  trim($_POST["facture_cl_total_TTC"]);
+
+    if(empty($facture_cl_client_id)||empty($facture_cl_adresse)||empty($facture_cl_ref)||empty($facture_cl_date_em)||empty($facture_cl_client_id)||empty($facture_cl_adresse)||empty($facture_cl_date_rec)||empty($facture_cl_total_HT)||empty($facture_cl_mont_TVA)||empty($facture_cl_total_TTC)){
+                array_push($error_array, "Les champs ne peuvent pas être vides");
+            }
+            else if($facture_cl_date_em < $dateMin || $facture_cl_date_em > $dateMax){
+                array_push($error_array,"La date recu doit etre entre 2016 et 2020" );
+            }
+            else if ($facture_cl_date_rec<=$datePayeeMin || $facture_cl_date_rec>=$dateMax){
+                array_push($error_array,"La date payee doit etre entre aujourd'hui et 2020" );
+            }
+            else{
+
 
     $query =  "
       INSERT INTO factures_cl
@@ -154,15 +169,15 @@ if(isset($_POST["create_client_facture"])){
     $create_client_facture_query = mysqli_query($connection, $query);
      confirmQuery(create_client_facture_query);
 
-                array_push($success_array, "Vous avez bien ajouter la facture. <a href ='/compta/factures_client.php'> Retour </a>");
+
 
     $last_id = mysqli_insert_id($connection);
 
-//      $statement = $connection->query("SELECT LAST_INSERT_ID()");
-//      $facture_cl_id = $statement->fetchColumn();
 
+    if(empty($error_array)){
       for($count=0; $count<$_POST["total_item"]; $count++)
       {
+
             $facture_cl_id                    =  $last_id;
             $produit_appellation              =  trim($_POST["produit_appellation"][$count]);
             $commande_produit_quantite        =  trim($_POST["commande_produit_quantite"][$count]);
@@ -170,6 +185,18 @@ if(isset($_POST["create_client_facture"])){
             $commande_produit_actual_montant  =  trim($_POST["commande_produit_actual_montant"][$count]);
             $commande_taxe_montant            =  trim($_POST["commande_taxe_montant"][$count]);
             $commande_produit_final_montant   =  trim($_POST["commande_produit_final_montant"][$count]);
+
+          if(empty($facture_cl_id)||empty($produit_appellation)||empty($commande_produit_quantite)||empty($commande_produit_prix)||empty($commande_produit_actual_montant)||empty($commande_taxe_montant)||empty($commande_produit_final_montant)){
+                array_push($error_array, "Les champs ne peuvent pas être vides");
+            }
+            else if(! filter_var($commande_produit_quantite, FILTER_VALIDATE_INT)){
+                array_push($error_array,"La quantite doit etre un numero entier" );
+            }
+           else if(strlen($commande_produit_quantite)==0 || strlen($commande_produit_quantite)>=5){
+                array_push($error_array,"La quantite entre 1 et 5 caractères" );
+            }
+            else{
+
 
         $query ="
           INSERT INTO commande_client
@@ -180,9 +207,23 @@ if(isset($_POST["create_client_facture"])){
 
         $create_commande_query = mysqli_query($connection, $query);
         confirmQuery(create_commande_query);
-      }
 
-}
+
+      }
+      }
+    if(!empty($error_array)){
+
+    $query = "DELETE FROM factures_cl WHERE facture_cl_id = {$last_id}";
+    $delete_query = mysqli_query($connection, $query);
+    confirmQuery($delete_query);
+    }
+    else{
+        array_push($success_array, "Vous avez bien ajouter la facture. <a href ='/compta/factures_client.php'> Retour </a>");
+    }
+    }
+    }
+  }
+
 
 
 ?>
@@ -225,24 +266,24 @@ if(isset($_POST["create_client_facture"])){
                     <td colspan="2">
                         <div class="row">
                             <div class="col-md-8 col-sm-8">
-                               <?php selectClient(); ?>
-                                   <h4>Client:</h4>
-                                   <div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>ID:</b> </span>
-									 <input class="form-control" readonly name="facture_cl_client_id" type="text" value="<?php echo $client_id; ?>">
-								</div>
+                                <?php selectClient(); ?>
+                                <h4>Client:</h4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>ID:</b> </span>
+                                    <input class="form-control" readonly name="facture_cl_client_id" type="text" value="<?php echo $client_id; ?>">
+                                </div>
 
 
 
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>Nom:</b> </span>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>Nom:</b> </span>
                                     <input class="form-control" readonly type="text" value="<?php echo $client_nom .' '.$client_prenom ?>">
                                 </div>
 
 
-                            <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>Adresse: </b> </span>
-                            <textarea name='facture_cl_adresse' id='facture_cl_adresse' readonly class='form-control' value='<?php echo $client_adresse; ?>'><?php echo $client_adresse; ?></textarea>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i> <b>Adresse: </b> </span>
+                                    <textarea name='facture_cl_adresse' id='facture_cl_adresse' readonly class='form-control' value='<?php echo $client_adresse; ?>'><?php echo $client_adresse; ?></textarea>
                                 </div>
 
                             </div>
@@ -276,7 +317,7 @@ if(isset($_POST["create_client_facture"])){
                                 </select></td>
 
 
-<!--                                <td><input type="text" name="produit_appellation[]" id="produit_appellation1" class="form-control input-sm"></td>-->
+                                <!--                                <td><input type="text" name="produit_appellation[]" id="produit_appellation1" class="form-control input-sm"></td>-->
                                 <td><input type="text" name="commande_produit_quantite[]" id="commande_produit_quantite1" data-srno="1" class="form-control commande_produit_quantite"></td>
 
                                 <td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix1" data-srno="1" readonly class="form-control commande_produit_prix"></td>
@@ -292,18 +333,18 @@ if(isset($_POST["create_client_facture"])){
                             <button type="button" name="add_row" id="add_row" class="btn btn-success ">+</button>
                         </div>
                         <div>
-                         <div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total HTC:</b> </span>
-									 <input type="text" name="facture_cl_total_HTC" id="facture_cl_total_HTC" readonly class="form-control input-sm">
-								</div>
-                    <div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total TVA:</b> </span>
-									 <input type="text" name="facture_cl_total_TVA" id="facture_cl_total_TVA" readonly class="form-control input-sm">
-								</div>
-                    <div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total TTC:</b> </span>
-									 <input type="text" name="facture_cl_total_TTC" id="facture_cl_total_TTC" readonly class="form-control input-sm">
-								</div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total HTC:</b> </span>
+                                <input type="text" name="facture_cl_total_HTC" id="facture_cl_total_HTC" readonly class="form-control input-sm">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total TVA:</b> </span>
+                                <input type="text" name="facture_cl_total_TVA" id="facture_cl_total_TVA" readonly class="form-control input-sm">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur fa" aria-hidden="true"></i> <b>Total TTC:</b> </span>
+                                <input type="text" name="facture_cl_total_TTC" id="facture_cl_total_TTC" readonly class="form-control input-sm">
+                            </div>
 
 
 
@@ -322,35 +363,36 @@ if(isset($_POST["create_client_facture"])){
     <div id="test">
 
 
-      <script>
-function showProduit(str) {
+        <script>
+            function showProduit(str) {
 
 
-   var i = document.getElementById('total_item').value;
+                var i = document.getElementById('total_item').value;
 
 
-            if (str == "") {
-        document.getElementById("commande_produit_prix"+i).value = "";
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safar
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("commande_produit_prix"+i).value = this.responseText;
+                if (str == "") {
+                    document.getElementById("commande_produit_prix" + i).value = "";
+                    return;
+                } else {
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safar
+                        xmlhttp = new XMLHttpRequest();
+                    } else {
+                        // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("commande_produit_prix" + i).value = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "/compta/includes/factures/load_data.php?q=" + str, true);
+                    xmlhttp.send();
+                }
+
             }
-        };
-        xmlhttp.open("GET","/compta/includes/factures/load_data.php?q="+str,true);
-        xmlhttp.send();
-    }
 
-}
-</script>
+        </script>
 
 
     </div>
