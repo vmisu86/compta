@@ -1,21 +1,29 @@
 
  <?php
  //load_data.php
-include "/compta/includes/db_connect.php";
+if(isset($_POST['get_option']))
+{
+$localhost = "localhost";
+$username = "root";
+$password = "";
+$dbname = "compta";
 
-$produitId = $_POST['produitId'];
-
-
-
-$sql="SELECT * FROM produits WHERE produit_id = '{$produitId}' ";
-$result = mysqli_query($connection,$sql);
-
-while($row = mysqli_fetch_array($result)) {
-
-    echo $row['produit_prix'];
-
+// db connection
+$connection =mysqli_connect($localhost, $username, $password, $dbname);
+// check connection
+if(!$connection) {
+  die("Connection Failed : " . mysqli_error());
 }
 
-mysqli_close($connection);
+
+
+ $state = $_POST['get_option'];
+ $find=mysql_query($connection,"SELECT * FROM produits WHERE produit_appellation ='$state'");
+ while($row=mysql_fetch_array($find))
+ {
+  echo $row['produit_prix'];
+ }
+ exit;
+}
 ?>
 

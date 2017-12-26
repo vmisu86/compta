@@ -17,7 +17,7 @@
 
                             html_code += '<td><input type="text" name="commande_produit_quantite[]" id="commande_produit_quantite' + count + '" data-srno="1" class="form-control input-sm commande_produit_quantite"></td>';
 
-                            html_code += '<td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix' + count + '"  data-srno="1" class="form-control input-sm commande_produit_prix"></td>';
+                            html_code += '<td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix' + count + '" readonly  data-srno="1" class="form-control input-sm commande_produit_prix"></td>';
 
                             html_code += '<td><input type="text" name="commande_produit_actual_montant[]" id="commande_produit_actual_montant' + count + '" data-srno="1" class="form-control input-sm commande_produit_actual_montant" readonly></td>';
 
@@ -41,83 +41,6 @@
                             $('#total_item').val(count);
                         });
 
-//                        function showProduit(str) {
-//                           for (i = 1; i <= count; i++) {
-//
-//                                    if (str == "") {
-//                                document.getElementById("commande_produit_prix"+i).value = "";
-//                                return;
-//                            } else {
-//                                if (window.XMLHttpRequest) {
-//                                    // code for IE7+, Firefox, Chrome, Opera, Safar
-//                                    xmlhttp = new XMLHttpRequest();
-//                                } else {
-//                                    // code for IE6, IE5
-//                                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//                                }
-//                                xmlhttp.onreadystatechange = function() {
-//                                    if (this.readyState == 4 && this.status == 200) {
-//                                        document.getElementById("commande_produit_prix"+i).value = this.responseText;
-//                                    }
-//                                };
-//                                xmlhttp.open("GET","/compta/includes/factures/load_data.php?q="+str,true);
-//                                xmlhttp.send();
-//                            }
-//
-//                        }
-//                        }
-
-                        // select on product data
-//function getProductData(count) {
-//
-//		var produitId = $("#produit_appellation"+count).val();
-//		alert(count);
-//		if(productId == "") {
-//			$("#commande_produit_prix"+count).val("");
-//
-//		} else {
-//			$.ajax({
-//				url: '/compta/includes/factures/load_prix.php',
-//				type: 'POST',
-//				data: {produitId : produitId},
-//				success:function(response) {
-//					// setting the rate value into the rate input field
-//
-//					$("#commande_produit_prix"+count).val(response);
-//
-//				} // /success
-//			}); // /ajax function to fetch the product data
-//		}
-//} // /select on product data
-//
-//
-//
-//function showProduit(str, count) {
-// alert(count);
-//
-//    for (j = 1; j <= count; j++) {
-//        alert(j);
-//            if (str == "") {
-//        document.getElementById("commande_produit_prix"+j).value = "";
-//        return;
-//    } else {
-//        if (window.XMLHttpRequest) {
-//            // code for IE7+, Firefox, Chrome, Opera, Safar
-//            xmlhttp = new XMLHttpRequest();
-//        } else {
-//            // code for IE6, IE5
-//            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//        }
-//        xmlhttp.onreadystatechange = function() {
-//            if (this.readyState == 4 && this.status == 200) {
-//                document.getElementById("commande_produit_prix"+j).value = this.responseText;
-//            }
-//        };
-//        xmlhttp.open("GET","/compta/includes/factures/load_data.php?q="+str,true);
-//        xmlhttp.send();
-//    }
-//    }
-//}
 
                         function cal_final_total(count) {
                             var final_item_total = 0;
@@ -154,14 +77,14 @@
                         }
 
                         //Display the conted values in the cases
-//                        $(document).on('blur', '.commande_produit_quantite', function() {
-//                            cal_final_total(count);
-//
-//                        });
-
-                        $(document).on('blur', '.commande_produit_prix', function() {
+                        $(document).on('blur', '.commande_produit_quantite', function() {
                             cal_final_total(count);
+
                         });
+
+//                        $(document).on('blur', '.commande_produit_prix', function() {
+//                            cal_final_total(count);
+//                        });
 
         });
 
@@ -356,7 +279,7 @@ if(isset($_POST["create_client_facture"])){
 <!--                                <td><input type="text" name="produit_appellation[]" id="produit_appellation1" class="form-control input-sm"></td>-->
                                 <td><input type="text" name="commande_produit_quantite[]" id="commande_produit_quantite1" data-srno="1" class="form-control commande_produit_quantite"></td>
 
-                                <td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix1" data-srno="1" class="form-control commande_produit_prix"></td>
+                                <td><input type="text" name="commande_produit_prix[]" id="commande_produit_prix1" data-srno="1" readonly class="form-control commande_produit_prix"></td>
 
                                 <td><input type="text" name="commande_produit_actual_montant[]" id="commande_produit_actual_montant1" data-srno="1" class="form-control input-sm commande_produit_actual_montant" readonly></td>
 
@@ -398,30 +321,36 @@ if(isset($_POST["create_client_facture"])){
     </form>
     <div id="test">
 
+
       <script>
-//function showProduit(str) {
-//   var i=1;
-//            if (str == "") {
-//        document.getElementById("commande_produit_prix"+i).value = "";
-//        return;
-//    } else {
-//        if (window.XMLHttpRequest) {
-//            // code for IE7+, Firefox, Chrome, Opera, Safar
-//            xmlhttp = new XMLHttpRequest();
-//        } else {
-//            // code for IE6, IE5
-//            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//        }
-//        xmlhttp.onreadystatechange = function() {
-//            if (this.readyState == 4 && this.status == 200) {
-//                document.getElementById("commande_produit_prix"+i).value = this.responseText;
-//            }
-//        };
-//        xmlhttp.open("GET","/compta/includes/factures/load_data.php?q="+str,true);
-//        xmlhttp.send();
-//    }
-//
-//}
+function showProduit(str) {
+
+
+   var i = document.getElementById('total_item').value;
+
+
+            if (str == "") {
+        document.getElementById("commande_produit_prix"+i).value = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safar
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("commande_produit_prix"+i).value = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","/compta/includes/factures/load_data.php?q="+str,true);
+        xmlhttp.send();
+    }
+
+}
 </script>
+
 
     </div>

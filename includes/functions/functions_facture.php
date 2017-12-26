@@ -152,7 +152,7 @@ function selectProduit(){
         $produit_appellation    = $row['produit_appellation'];
 
 
-        echo "<option value='".$row['produit_appellation']."' id='changeProduct".$row['produit_id']."'>".$row['produit_appellation']."</option>";
+        echo "<option value='".$row['produit_appellation']."'>".$row['produit_appellation']."</option>";
 
     }
 }
