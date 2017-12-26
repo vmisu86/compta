@@ -51,7 +51,7 @@ if(isset($_GET['delete'])){
             </table>
         </div>
     </div>
-
+<?php change_to_payee_fournisseur(); ?>
 <script>
     $(document).ready(function() {
         $(".delete_fournisseur_facture_link").on('click', function() {

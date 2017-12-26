@@ -310,6 +310,9 @@ function viewAllFournisseurFacture(){
                 <span class='caret'></span>
                 </button>
             <ul class='dropdown-menu' aria-labelledby='dLabel'>
+            	<li>
+                    <a class='' href='factures_fournisseurs.php?change_to_payee_fournisseur={$facture_fr_id}'><i class='fa fa-money' aria-hidden='true'></i> Payee</a>
+                </li>
                 <li>
                     <a class='' href='factures_fournisseurs.php?source=edit_fournisseur_facture&edit_facture_id={$facture_fr_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
                 </li>
@@ -324,6 +327,22 @@ function viewAllFournisseurFacture(){
             "</td></tr>";
 
 
+    }
+}
+
+//------------------------------CHANGER LA FACTURE A PAYEE------------------//
+
+function change_to_payee_fournisseur(){
+    global $connection;
+
+    if(isset($_GET['change_to_payee_fournisseur'])){
+        $the_facture_fournisseur_id = $_GET['change_to_payee_fournisseur'];
+
+        $query = "UPDATE factures_fr SET factures_fr_payee= '1' WHERE facture_fr_id= '{$the_facture_fournisseur_id}'";
+
+        $change_facture_status = mysqli_query($connection, $query);
+        confirmQuery($change_facture_status);
+        redirect("factures_fournisseurs.php");
     }
 }
 //--------------- SELECT FOURNISSEURS POUR LA FACTURE--------------------------------//
