@@ -40,7 +40,7 @@ function viewAllFournisseurs(){
                     <a class='' href='fournisseurs.php?source=edit_fournisseur&edit_fournisseur={$fournisseur_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
                 </li>
                 <li>
-                    <a rel='$fournisseur_id' class='delete_fournisseur_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
+                    <a rel='$fournisseur_id' class='delete_fournisseur_facture_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
                 </li>
             </ul>
         </div>". "

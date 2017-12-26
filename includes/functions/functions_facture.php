@@ -57,17 +57,39 @@ function viewAllFactureClient(){
                 <span class='caret'></span>
                 </button>
             <ul class='dropdown-menu' aria-labelledby='dLabel'>
-                <li>
-                    <a class='' href='employees.php?source=edit_employee&edit_empolyee={$facture_client_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
+             <li>
+                    <a class='' href='factures_client.php?change_to_payee={$facture_client_id}'><i class='fa fa-money' aria-hidden='true'></i> Payee</a>
+                </li>
+                 <li>
+                    <a class='' href='includes/factures/generate_pdf.php?generate_pdf_clint_id={$facture_client_id}'><i class='fa fa-file-text-o' aria-hidden='true'></i> PDF</a>
                 </li>
                 <li>
-                    <a rel='$facture_client_id' class=' delete_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
+                    <a class='' href='factures_client.php?source=edit_client_facture&edit_client_facture={$facture_client_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Modifier</a>
+                </li>
+                <li>
+                    <a rel='$facture_client_id' class='delete_client_facture_link' href='#'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer</a>
                 </li>
             </ul>
         </div>". "
     </td>
 </tr>";
 }
+}
+
+//------------------------------CHANGER LA FACTURE A PAYEE------------------//
+
+function change_to_payee(){
+    global $connection;
+
+    if(isset($_GET['change_to_payee'])){
+        $the_facture_clint_id = $_GET['change_to_payee'];
+
+        $query = "UPDATE factures_cl SET facture_cl_payee = '1' WHERE facture_cl_id = '{$the_facture_clint_id}'";
+
+        $change_facture_status = mysqli_query($connection, $query);
+        confirmQuery($change_facture_status);
+        redirect("factures_client.php");
+    }
 }
 
 //------------------------------SELECT CLIENT POUR LA FACTURE------------------//
@@ -121,13 +143,16 @@ function selectProduit(){
 
     global $connection;
 
+    echo "<option value=''>~~SELECT~~</option>";
+
     $query = "SELECT * FROM produits";
     $select_all_produits = mysqli_query($connection, $query);
     while($row = mysqli_fetch_array($select_all_produits)){
         $produit_id             = $row['produit_id'];
         $produit_appellation    = $row['produit_appellation'];
 
-        echo "<option value='$produit_id'>$produit_appellation</option>";
+
+        echo "<option value='".$row['produit_appellation']."' id='changeProduct".$row['produit_id']."'>".$row['produit_appellation']."</option>";
 
     }
 }

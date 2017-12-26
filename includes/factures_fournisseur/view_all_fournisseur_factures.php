@@ -7,7 +7,7 @@ if(isset($_GET['delete'])){
     $query = "DELETE FROM factures_fr WHERE facture_fr_id = {$the_facture_fr_id}";
     $delete_query = mysqli_query($connection, $query);
 
-    redirect("/compta/employees.php");
+    redirect("/compta/factures_fournisseurs.php");
     }
 
 ?>

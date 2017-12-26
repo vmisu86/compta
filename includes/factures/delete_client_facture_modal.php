@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div id="delete_facture_client" class="modal fade" role="dialog">
+<div id="delete_client_facture" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -13,11 +13,9 @@
       </div>
       <div class="modal-footer">
        <a href="" class="btn btn-danger modal_delete_link">Supprimer</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
       </div>
     </div>
 
   </div>
 </div>
-
-

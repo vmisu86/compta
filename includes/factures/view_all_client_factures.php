@@ -1,19 +1,19 @@
-<?php include("delete_modal.php");?>
+<?php include("delete_client_facture_modal.php");?>
 <?php
 
+
 if(isset($_GET['delete'])){
-    $the_employee_id = $_GET['delete'];
-    $query = "DELETE FROM salaires WHERE salarie_id = {$the_employee_id}";
+    $the_facture_cl_id = $_GET['delete'];
+    $query = "DELETE FROM factures_cl WHERE facture_cl_id = {$the_facture_cl_id}";
     $delete_query = mysqli_query($connection, $query);
 
-    redirect("/compta/employees.php");
+    redirect("/compta/factures_client.php");
     }
 
 ?>
-
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> Tous les Factures Client</h1>
+        <h1 class="page-header"> Tous les Factures Client <?php echo $the_facture_client_id; ?></h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -54,14 +54,14 @@ if(isset($_GET['delete'])){
 
 
 </div>
-
+<?php change_to_payee(); ?>
 <script>
     $(document).ready(function() {
-        $(".delete_link").on('click', function() {
+        $(".delete_client_facture_link").on('click', function() {
             var id = $(this).attr("rel");
-            var delete_url = "employees.php?delete=" + id + " ";
+            var delete_url = "factures_client.php?delete=" + id + " ";
             $(".modal_delete_link").attr("href", delete_url);
-            $("#delete_facture_client").modal('show');
+            $("#delete_client_facture").modal('show');
         });
     });
 
