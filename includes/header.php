@@ -75,4 +75,8 @@ session_start();
     include "includes/functions/functions_fournisseur.php";
     include "includes/functions/functions_taxe.php";
 
+
+    if(!isset($_SESSION['user_id'])){
+    redirect("index.php");
+}
     ?>
