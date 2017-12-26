@@ -23,7 +23,7 @@
 
                             html_code += '<td><input type="text" name="commande_taxe_montant[]" id="commande_taxe_montant' + count + '" data-srno="1" readonly class="form-control input-sm number_only commande_taxe_montant"></td>';
 
-                            html_code += '<td><input type="text" name="	commande_produit_final_montant[]" id="commande_produit_final_montant' + count + '" data-srno="1" readonly class="form-control input-sm 	commande_produit_final_montant"></td>';
+                            html_code += '<td><input type="text" name="commande_produit_final_montant[]" id="commande_produit_final_montant' + count + '" data-srno="1" readonly class="form-control input-sm 	commande_produit_final_montant"></td>';
 
                             html_code += '<td><button type="button" name="remove_row" id="' + count + '" class="btn btn-danger btn-xs remove_row">X</button></td>';
                             html_code += '</tr>';
