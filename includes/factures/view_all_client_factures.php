@@ -1,4 +1,5 @@
 <?php include("delete_client_facture_modal.php");?>
+<?php include("produits_client_facture_modal.php");?>
 <?php
 
 
@@ -9,6 +10,8 @@ if(isset($_GET['delete'])){
 
     redirect("/compta/factures_client.php");
     }
+
+
 
 ?>
 <div class="row">
@@ -58,11 +61,28 @@ if(isset($_GET['delete'])){
 <script>
     $(document).ready(function() {
         $(".delete_client_facture_link").on('click', function() {
-            var id = $(this).attr("rel");
+            var id = $(this).attr("id");
             var delete_url = "factures_client.php?delete=" + id + " ";
             $(".modal_delete_link").attr("href", delete_url);
             $("#delete_client_facture").modal('show');
         });
+
+         $(".view_data").click(function() {
+            var facture_id = $(this).attr("id");
+
+             $.ajax({
+                 url:"/compta/includes/factures/select.php",
+                 method:"post",
+                 data:{facture_id:facture_id},
+                 success:function(data){
+                     $('#produit_detail').html(data);
+                     $("#dataModal").modal("show");
+                 }
+             });
+
+
+        });
+
     });
 
 </script>

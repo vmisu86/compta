@@ -34,7 +34,6 @@
                                 case 'envoyer_email';
                                  include"includes/factures/envoyer_email.php";
                                 break;
-
                             default:
 
                                 include"includes/factures/view_all_client_factures.php";

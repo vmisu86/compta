@@ -14,6 +14,7 @@ if(isset($_GET['delete'])){
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"> Tous les Factures Fournisseurs</h1>
+        <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -63,4 +64,8 @@ if(isset($_GET['delete'])){
     });
 
 </script>
-
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>

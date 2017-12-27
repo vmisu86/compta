@@ -36,21 +36,15 @@ function viewAllFactureClient(){
          $facture_client_payee = "<p class='label label-danger'>En retard</p>";
         }
 
-    echo "
-<tr>
-    <td>".$facture_client_ref. "
-    </td>
-    <td>".$facture_client_date_em. "
-    </td>
-    <td>".$facture_client_date_rec. "
-    </td>
-    <td>".$client_prenom." ".$client_nom."
-    </td>
-    <td>".$facture_client_total_TTC. "
-    </td>
-    <td>".$facture_client_payee. "
-    </td>
-    <td>"."
+
+ echo"<tr>";
+ echo"<td>".$facture_client_ref."</td>";
+  echo"<td>".$facture_client_date_em. "</td>";
+  echo"  <td>".$facture_client_date_rec. "</td>";
+  echo"  <td>".$client_prenom." ".$client_nom."</td>";
+  echo"  <td>".$facture_client_total_TTC. "</td>";
+  echo"  <td>".$facture_client_payee. "</td>";
+  echo"  <td>"."
         <div class='dropdown'>
             <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                 Options
@@ -92,6 +86,33 @@ function change_to_payee(){
     }
 }
 
+//------------------------------SELECT PRODUITS COMMANDEE POUR LA FACTURE------------------//
+function select_produits_commande(){
+
+    global $connection;
+
+    if(isset($_GET['client_facture'])){
+
+    $the_facture_cl_id = $_GET['client_facture'];
+
+    $query = "SELECT * FROM commande_client";
+    $select_produit_facture_client = mysqli_query($connection, $query);
+    while($row = mysqli_fetch_assoc($select_produit_facture_client)){
+
+        $produit_appellation = $row['produit_appellation'];
+        $commande_produit_quantite = $row['commande_produit_quantite'];
+        $commande_produit_prix = $row['commande_produit_prix'];
+        $commande_produit_actual_montant = $row['commande_produit_actual_montant'];
+
+        echo"<tr>";
+        echo"<td>$produit_appellation</td>";
+        echo"<td>$commande_produit_quantite</td>";
+        echo"<td>$commande_produit_prix</td>";
+        echo"<td>$commande_produit_actual_montant</td>";
+        echo"</tr>";
+    }
+  }
+}
 //------------------------------SELECT CLIENT POUR LA FACTURE------------------//
 function selectClient(){
 
@@ -487,7 +508,6 @@ function recetteFactureParMois(){
 }
 
 }
-
 
 //------------------Comptabilité prévisionnelle sur les mois à venir-------------//
 

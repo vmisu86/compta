@@ -525,5 +525,9 @@
 
 </div>
 <!-- /#wrapper -->
-
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
 <?php include "includes/footer.php" ?>
