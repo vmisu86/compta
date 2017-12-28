@@ -54,6 +54,9 @@ function viewAllFactureClient(){
              <li>
                     <a class='' href='factures_client.php?change_to_payee={$facture_client_id}'><i class='fa fa-money' aria-hidden='true'></i> Payee</a>
                 </li>
+                <li>
+                <a name='view' value='view' id='$facture_client_id' class='view_data' /><i class='fa fa-list-ul' aria-hidden='true'></i> Produit commande</a>
+                </li>
                  <li>
                     <a class='' href='includes/factures/generate_pdf.php?generate_pdf_clint_id={$facture_client_id}'><i class='fa fa-file-text-o' aria-hidden='true'></i> PDF</a>
                 </li>

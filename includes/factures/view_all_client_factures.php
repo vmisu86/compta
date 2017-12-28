@@ -67,21 +67,18 @@ if(isset($_GET['delete'])){
             $("#delete_client_facture").modal('show');
         });
 
-         $(".view_data").click(function() {
-            var facture_id = $(this).attr("id");
-
-             $.ajax({
-                 url:"/compta/includes/factures/select.php",
-                 method:"post",
-                 data:{facture_id:facture_id},
-                 success:function(data){
-                     $('#produit_detail').html(data);
-                     $("#dataModal").modal("show");
-                 }
-             });
-
-
-        });
+        $('.view_data').click(function(){
+           var facture_id = $(this).attr("id");
+           $.ajax({
+                url:"/compta/includes/factures/select.php",
+                method:"post",
+                data:{facture_id:facture_id},
+                success:function(data){
+                     $('#employee_detail').html(data);
+                     $('#dataModal').modal("show");
+                }
+           });
+      });
 
     });
 
