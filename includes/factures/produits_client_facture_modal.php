@@ -3,7 +3,7 @@
            <div class="modal-content">
                 <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                     <h4 class="modal-title">Produits Details</h4>
+                     <h4 class="modal-title">Produits Détails</h4>
                 </div>
                 <div class="modal-body" id="employee_detail">
                 </div>

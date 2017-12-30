@@ -43,6 +43,7 @@ session_start();
         <!-- custom css -->
     <link rel="stylesheet" href="css/custom_compta.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- fullCalendar 2.2.5 -->
     <script src="assests/plugins/moment/moment.min.js"></script>
     <script src="assests/plugins/fullcalendar/fullcalendar.min.js"></script>

@@ -163,6 +163,24 @@ function selectClient(){
  }
 
 //------------------------------SELECT PRODUIT POUR LA FACTURE CLIENT------------------//
+function selectEditProduit(){
+
+    global $connection;
+    if(isset($_GET['edit_client_facture'])){
+
+   $the_facture_id = $_GET['edit_client_facture'];
+    $query = "SELECT * FROM commande_client WHERE 	facture_cl_id=$the_facture_id";
+    $select_all_produits = mysqli_query($connection, $query);
+    while($row = mysqli_fetch_array($select_all_produits)){
+        $produit_appellation    = $row['produit_appellation'];
+
+
+        echo "<option value='".$row['produit_appellation']."'>".$sub_row["produit_appellation"]."</option>";
+     }
+   }
+}
+
+//------------------------------SELECT PRODUIT POUR MODIFIER LA FACTURE CLIENT------------------//
 function selectProduit(){
 
     global $connection;
@@ -180,7 +198,6 @@ function selectProduit(){
 
     }
 }
-
 //---------------------SELECT TOUS LES FACTURE PAYEE OU NON-------------------------//
 
 function selectFactureClientPayeeOuNon($type){
@@ -237,13 +254,14 @@ function selectFactureClientEmailRappelle(){
 
         confirmQuery($select_non_payee);
 
+        echo"<tr>";
         echo "<td>$facture_cl_ref</td>";
         echo "<td>$client_nom"." "."$client_prenom</td>";
         echo "<td>$facture_cl_date_rec</td>";
         echo "<td>$facture_cl_total_TTC</td>";
         echo "<td><a class='btn btn-primary' href='/compta/factures_client.php?source=envoyer_email&reference={$facture_cl_ref}&nom={$client_nom}&email={$client_email}&prenom={$client_prenom}&date_rec={$facture_cl_date_rec}&total={$facture_cl_total_TTC}
         '>Envoyer</a></td>";
-
+        echo"</tr>";
     }
 }
 
@@ -498,13 +516,13 @@ function recetteFactureParMois(){
         echo "<tr>";
         echo "<td>$nom_mois</td>";
        if($balance > 0){
-            echo "<td><p class='text-center somme'>Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur = <strong class='sommepositif' >$balance</strong></p></td>";
+            echo "<td> <a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommepositif' >$balance</strong></a></td>";
         }
         elseif($balance == 0){
-            echo "<td><p class='text-center somme'>Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur = <strong class='sommezero' >$balance</strong></p></td>";
+            echo "<td> <a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommezero' >$balance</strong></a></td>";
         }
         else{
-            echo "<td><p class='text-center somme'>Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur = <strong class='sommenegatif' >$balance</strong></p></td>";
+            echo "<td><a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommenegatif' >$balance</strong></a></td>";
        }
         echo"</tr>";
 
@@ -561,13 +579,13 @@ function comptaPrevisionnelle(){
         echo "<tr>";
         echo "<td>$nom_mois</td>";
        if($balance > 0){
-            echo "<td><p class='text-center somme'><strong class='sommepositif' >$balance</strong></p></td>";
+            echo "<td><a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommepositif' >$balance</strong></a></td>";
         }
         elseif($balance == 0){
-            echo "<td><p class='text-center somme'><strong class='sommezero' >$balance</strong></p></td>";
+            echo "<td><a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommezero' >$balance</strong></a></td>";
         }
         else{
-            echo "<td><p class='text-center somme'><strong class='sommenegatif' >$balance</strong></p></td>";
+            echo "<td> <a href='#' title='Détails' data-toggle='popover' data-trigger='hover' data-content='Revenu:$total_client, Taxe:$total_taxe, Depense:$total_fournisseur'><strong class='sommenegatif' >$balance</strong></a></p></td>";
        }
         echo"</tr>";
 
